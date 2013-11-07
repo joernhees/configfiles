@@ -1,0 +1,20 @@
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = warn
+	excludesfile = ~/.gitignore
+[color]
+	ui = true
+[alias]
+	last = log -1 HEAD
+	serve = daemon --reuseaddr --base-path=. --export-all --verbose
+	stash-unapply = !git stash show -p | git apply -R
+	graphs = log --graph --oneline --all --decorate
+	graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --date-order
+	logf = log --follow
+	delete-remote-branch = push origin --delete
+	pu = !"git fetch origin -v; git fetch upstream -v; git merge --ff-only upstream/master"
+	pull-all = !"for b in $(git for-each-ref refs/heads --format='%(refname)') ; do git checkout ${b#refs/heads/} ; git pull --ff-only ; done"
+	unreleased-changes = !"LTAG=$(git describe --tags --abbrev=0) && git log $LTAG.."
+[push]
+	default = simple

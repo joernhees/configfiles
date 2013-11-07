@@ -1,0 +1,12 @@
+# ignore kate backups
+*~
+# ignore some very specific tex tmp files
+*.synctex.gz
+
+# ignore mac os x crap
+.DS_Store
+
+# ignore compiled files
+*.pyc
+*.pyo
+
